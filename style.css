@@ -1,0 +1,47 @@
+body{
+    background-color: #92D5E6;
+    font-family: sans-serif;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section{
+    width: 350px;
+    height: 15.625rem;
+    background-color: #ebfbff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.timerTitle{
+    font-size: 30px;
+}
+
+.timerNumber{
+    margin: 40px 0;
+    font-size: 34px;
+}
+
+button{
+    margin: 0 5px;
+    padding: 5px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #9f5afd;
+    cursor: pointer;
+    font-weight: bold;
+    color: #effbff;
+    transition: background-color 0.5s;
+}
+
+button:hover{
+    background-color: #7414fa;
+}
+
