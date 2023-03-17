@@ -6,42 +6,59 @@ const reset = document.querySelector('.buttonReset');
 let timeHour = 00;
 let timeMinute = 00;
 let timeSecond = 00;
-let pauseTimer = false;
+let pauseTimer = true;
+let counter;
 
-start.addEventListener('click', function(event){
-    setInterval(function(){
-        if(timeSecond === 60 && pauseTimer !== false){
-            timeSecond = 00;
-            timeMinute++;
-        }
-        if (timeMinute === 60 && pauseTimer !== false){
-            timeMinute = 00;
-            timeHour++;
-        }
-        if (timeHour === 60 && pauseTimer !== false){
-            timeHour = 00;
-        }
-        timer.textContent = `${addZero(timeHour)}:${addZero(timeMinute)}:${addZero(timeSecond)}`;
-        timeSecond++;
-    }, 1000);
-
+start.addEventListener('click', function (event) {
+    pauseTimer = false;
+    counter = setInterval(timerCounter, 1000);
     start.disabled = true;
-});
+}, false);
 
-pause.addEventListener('click', function(event){
-    if(pauseTimer){
+
+
+function timerCounter(){
+    {
+        if (pauseTimer === false) {
+            if (timeSecond === 60) {
+                timeSecond = 00;
+                timeMinute++;
+            }
+            if (timeMinute === 60) {
+                timeMinute = 00;
+                timeHour++;
+            }
+            if (timeHour === 60) {
+                timeHour = 00;
+            }
+            timer.textContent = `${addZero(timeHour)}:${addZero(timeMinute)}:${addZero(timeSecond)}`;
+            timeSecond++;
+        }
+    }
+}
+
+pause.addEventListener('click', function (event) {
+    if (pauseTimer) {
         pauseTimer = false;
-    }else{
+        pause.textContent = 'Pause';
+    } else {
+        pause.textContent = 'Resume';
         pauseTimer = true;
     }
 });
 
+reset.addEventListener('click', function (event) {
+    pauseTimer = true;
+    timeHour = 00;
+    timeMinute = 00;
+    timeSecond = 00;
+    clearInterval(counter);
+    timer.textContent = `${addZero(timeHour)}:${addZero(timeMinute)}:${addZero(timeSecond)}`;
+    start.disabled = false;
+});
 
-
-
-
-function addZero(time){
-    if(time >= 0 && time <= 9){
+function addZero(time) {
+    if (time >= 0 && time <= 9) {
         return `0${time}`;
     }
     return time;
