@@ -17,23 +17,18 @@ start.addEventListener('click', function (event) {
 
 
 
-function timerCounter(){
-    {
-        if (pauseTimer === false) {
-            if (timeSecond === 60) {
-                timeSecond = 00;
-                timeMinute++;
-            }
-            if (timeMinute === 60) {
-                timeMinute = 00;
-                timeHour++;
-            }
-            if (timeHour === 60) {
-                timeHour = 00;
-            }
-            timer.textContent = `${addZero(timeHour)}:${addZero(timeMinute)}:${addZero(timeSecond)}`;
-            timeSecond++;
+function timerCounter() {
+    if (pauseTimer === false) {
+        if (timeSecond === 60) {
+            timeSecond = 00;
+            timeMinute++;
         }
+        if (timeMinute === 60) {
+            timeMinute = 00;
+            timeHour++;
+        }
+        timer.textContent = `${addZero(timeHour)}:${addZero(timeMinute)}:${addZero(timeSecond)}`;
+        timeSecond++;
     }
 }
 
